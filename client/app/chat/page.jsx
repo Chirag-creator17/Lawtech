@@ -2,7 +2,7 @@ import Navbar from "@/ui/navbar/navbar";
 const ChatComponent = () => {
   return (
     <>
-      <Navbar/>
+      <Navbar />
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -35,7 +35,7 @@ const ChatComponent = () => {
                     />
                   </div>
                   <div>
-                    <h3 className="text-violet-500 tex-md">Lupe Fiasco</h3>
+                    <h3 className="text-blue-700 tex-md">Lupe Fiasco</h3>
                     <p className="text-sm text-gray-400 font-light overflow-hidden h-5">
                       I got two ticket to go see the awesome
                     </p>
@@ -50,7 +50,7 @@ const ChatComponent = () => {
                     />
                   </div>
                   <div>
-                    <h3 className="text-violet-500 tex-md">Lupe Fiasco</h3>
+                    <h3 className="text-blue-700 tex-md">Lupe Fiasco</h3>
                     <p className="text-sm text-gray-400 font-light overflow-hidden h-5">
                       I got two ticket to go see the awesome
                     </p>
@@ -65,7 +65,7 @@ const ChatComponent = () => {
                     />
                   </div>
                   <div>
-                    <h3 className="text-violet-500 tex-md">Lupe Fiasco</h3>
+                    <h3 className="text-blue-700 tex-md">Lupe Fiasco</h3>
                     <p className="text-sm text-gray-400 font-light overflow-hidden h-5">
                       I got two ticket to go see the awesome
                     </p>
@@ -91,8 +91,8 @@ const ChatComponent = () => {
               </div>
               <div className="message-area mt-4 px-4">
                 <div className="relative receive-chat flex justify-start">
-                  <div className="px-5 mb-2 bg-violet-400 text-white py-2 text-sm max-w-[80%] rounded font-light">
-                    <i className="fa fa-caret-up text-violet-400 -top-2 absolute"></i>
+                  <div className="px-5 mb-3 bg-blue-700 text-white py-2 text-sm max-w-[80%] rounded font-light">
+                    <i className="fa fa-caret-up text-blue-700 -top-2 absolute"></i>
                     <p>
                       I got two tickets to go to see this awesome band called,
                       Lorem ipsum dollar !! Do you want to come ?
@@ -100,7 +100,7 @@ const ChatComponent = () => {
                   </div>
                 </div>
                 <div className="send-chat flex justify-end">
-                  <div className="px-5 mb-2 bg-violet-200 text-slate-600 py-2 text-sm max-w-[80%] rounded font-light">
+                  <div className="px-5 mb-3 bg-[#f4f4f5] py-2 text-sm max-w-[80%] rounded font-light">
                     <p>
                       I got two tickets to go to see this awesome band called,
                       Lorem ipsum dollar !! Do you want to come ?
@@ -108,7 +108,7 @@ const ChatComponent = () => {
                   </div>
                 </div>
                 <div className="receive-chat flex justify-start">
-                  <div className="px-5 mb-2 bg-violet-400 text-white py-2 text-sm max-w-[80%] rounded font-light">
+                  <div className="px-5 mb-3 bg-blue-700 text-white py-2 text-sm max-w-[80%] rounded font-light">
                     <p>
                       I got two tickets to go to see this awesome band called,
                       Lorem ipsum dollar !! Do you want to come ?
@@ -116,7 +116,7 @@ const ChatComponent = () => {
                   </div>
                 </div>
                 <div className="relative send-chat flex justify-end">
-                  <div className="px-5 mb-2 bg-violet-200 text-slate-600 py-2 text-sm max-w-[80%] rounded font-light">
+                  <div className="px-5 mb-3 bg-[#f4f4f5] py-2 text-sm max-w-[80%] rounded font-light">
                     <p>
                       I got two tickets to go to see this awesome band called,
                       Lorem ipsum dollar !! Do you want to come ?
