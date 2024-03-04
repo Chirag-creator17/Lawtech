@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const DivAnimatedSteps = () => {
   return (
     <div className="flex-auto mt-10 mb-10 mx-8">
@@ -10,9 +12,9 @@ const DivAnimatedSteps = () => {
             Use our AI powered chatbot to explore and find the attorney to get
             legal advice or assistance with your issue.
           </div>
-          <button className="bg-[#3D00B7] text-white text-lg py-2 px-5 rounded-[60px] mt-8">
+          <Link href="/bot" className="bg-[#3D00B7] text-white text-lg py-2 px-5 rounded-[60px] mt-8">
             Launch bot
-          </button>
+          </Link>
         </div>
         <div className="grid grid-cols-10">
           <img src="./Group.svg" className="h-[100%]" alt="a" />
