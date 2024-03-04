@@ -35,9 +35,13 @@ export default function Bot() {
     console.log({ msg: input, chats: chats });
 
     axios
-      .post("http://localhost:5000/", {
+      .post("http://127.0.0.1:5000/", {
         msg: input,
         chats: chats,
+        header: {
+          'Content-Type': 'text/plain',
+          'Access-Control-Allow-Origin': '*',
+      }
       })
       .then((res) => {
         console.log(res.data);
