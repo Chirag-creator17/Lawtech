@@ -2,8 +2,10 @@
 import { useState } from "react";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
-
+import { useRouter } from "next/navigation";
 const LoginComponent = () => {
+
+  const router = useRouter();
   const [clicked, setClicked] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -11,6 +13,21 @@ const LoginComponent = () => {
     e.preventDefault();
     // Handle form submission here
     console.log("Submitted:", email, password);
+    const username= email;
+    const res = await fetch("/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    });
+    const { success } = await res.json();
+    if (success) {    
+      router.push("/try");
+      router.refresh();
+    } else {
+      alert("Login failed");
+    }
     setClicked(false);
     setEmail("");
     setPassword("");
