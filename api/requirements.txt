@@ -5,3 +5,4 @@ spacy
 geopy
 flask_cors
 python-dotenv
+beautifulsoup4
