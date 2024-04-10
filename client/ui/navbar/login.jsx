@@ -23,8 +23,8 @@ const LoginComponent = () => {
     });
     const { success } = await res.json();
     if (success) {    
-      router.push("/try");
-      router.refresh();
+      router.push("/");
+      window.location.reload();
     } else {
       alert("Login failed");
     }

@@ -39,9 +39,9 @@ export default function Bot() {
         msg: input,
         chats: chats,
         header: {
-          'Content-Type': 'text/plain',
-          'Access-Control-Allow-Origin': '*',
-      }
+          "Content-Type": "text/plain",
+          "Access-Control-Allow-Origin": "*",
+        },
       })
       .then((res) => {
         console.log(res.data);
@@ -82,7 +82,21 @@ export default function Bot() {
     }
   }, [chats]);
   const display_clients = (message) => {
-    // string to json
+    // string to
+
+    const data = [
+      "Name",
+      "AOR Code",
+      "Court",
+      "Stakeholder Type",
+      "Type of Lawyer",
+      "Stars",
+      "Type of Court",
+      "Location",
+      "Consultation Fee",
+      "Location",
+    ];
+
     const json = JSON.parse(message);
     // disply this json as table {
     //     "Name": "Anushka",
@@ -97,38 +111,97 @@ export default function Bot() {
     //     "Location": "delhi"
     //   } having this values
     return (
-      <table className="table-auto">
-        <thead>
-          <tr className="text-left border-b">
-            <th className="pr-2">Name</th>
-            <th className="pr-2">AOR_Code</th>
-            <th className="pr-2">Court</th>
-            <th className="pr-2">Stakeholder_Type</th>
-            <th className="pr-2">Type_of_Lawyer</th>
-            <th className="pr-2">Stars</th>
-            <th className="pr-2">Type_of_Court</th>
-            <th className="pr-2">location</th>
-            <th className="pr-2">consultation_fee</th>
-            <th className="pr-2">Location</th>
-          </tr>
-        </thead>
-        <tbody>
-          {json.map((item) => (
-            <tr key={item.AOR_Code}>
-              <td>{item.Name}</td>
-              <td>{item.AOR_Code}</td>
-              <td>{item.Court}</td>
-              <td>{item.Stakeholder_Type}</td>
-              <td>{item.Type_of_Lawyer}</td>
-              <td>{item.Stars}</td>
-              <td>{item.Type_of_Court}</td>
-              <td>{item.location}</td>
-              <td>{item.consultation_fee}</td>
-              <td>{item.Location}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      // <table className="table-auto">
+      //   <thead>
+      //     <tr className="text-left border-b">
+      //       <th className="pr-2">Name</th>
+      //       <th className="pr-2">AOR Code</th>
+      //       <th className="pr-2">Court</th>
+      //       <th className="pr-2">Stakeholder Type</th>
+      //       <th className="pr-2">Type of Lawyer</th>
+      //       <th className="pr-2">Stars</th>
+      //       <th className="pr-2">Type of Court</th>
+      //       <th className="pr-2">Location</th>
+      //       <th className="pr-2">Consultation Fee</th>
+      //       <th className="pr-2">Location</th>
+      //     </tr>
+      //   </thead>
+      //   <tbody>
+      //     {json.map((item) => (
+      //       <tr key={item.AOR_Code}>
+      //         <td>{item.Name}</td>
+      //         <td>{item.AOR_Code}</td>
+      //         <td>{item.Court}</td>
+      //         <td>{item.Stakeholder_Type}</td>
+      //         <td>{item.Type_of_Lawyer}</td>
+      //         <td>{item.Stars}</td>
+      //         <td>{item.Type_of_Court}</td>
+      //         <td>{item.location}</td>
+      //         <td>{item.consultation_fee}</td>
+      //         <td>{item.Location}</td>
+      //       </tr>
+      //     ))}
+      //   </tbody>
+      // </table>
+      <div className="flex flex-col">
+        <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+            <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+              <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
+                  <tr>
+                    {data.map((key, index) => (
+                      <th
+                        key={index}
+                        scope="col"
+                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      >
+                        {key}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                  {json.map((item) => (
+                    <tr key={item.AOR_Code}>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm text-gray-900">{item.Name}</div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm text-gray-900">{item.AOR_Code}</div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm text-gray-900">{item.Court}</div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm text-gray-900">{item.Stakeholder_Type}</div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm text-gray-900">{item.Type_of_Lawyer}</div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm text-gray-900">{item.Stars}</div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm text-gray-900">{item.Type_of_Court}</div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm text-gray-900">{item.location}</div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm text-gray-900">{item.consultation_fee}</div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="text-sm text-gray-900">{item.Location}</div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
     );
   };
   return (
@@ -139,7 +212,7 @@ export default function Bot() {
           <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-tr from-[#00CDFA] to-[#FF76DF]">
             E-Vakil Bot
           </h1>
-          <p>Your personalised AI-powered chatbot for all your legal needs</p>
+          <p className="mt-3">Your personalised AI-powered chatbot for all your legal needs</p>
 
           <div className="flex gap-4 mt-12 h-[30vh]">
             <div className="flex flex-col gap-y-4 w-[30vw] p-4">
@@ -173,11 +246,11 @@ export default function Bot() {
               </div>
               <p className="border border-zinc-300 rounded-lg p-4 font-[#111827] text-sm">
                 "My friend murdered my father because he was not able to pay the
-                loan of rs 5 lakhs. I reside in Tees hazari district. Suggest me
+                loan of Rs 5 lakhs. I reside in Tees Hazari district. Suggest me
                 a lawyer in the consultation fee range 3000-5000."
               </p>
             </div>
-            <div className="flex flex-col gap-y-4 w-[30vw] p-4">
+            <div className="flex flex-col gap-y-2 w-[30vw] p-4">
               <div className="flex items-center gap-x-2">
                 <svg
                   width="25"
@@ -227,7 +300,7 @@ export default function Bot() {
             </div>
           </div>
         </div>
-        <div className="flex mt-8 h-[40vh] w-[80vw] overflow-y-scroll rounded-lg bg-[##E9E9FE]">
+        {/* <div className="flex mt-8 h-[40vh] w-[80vw] overflow-y-scroll rounded-lg bg-[##E9E9FE]"> */}
           <div ref={chatContainerRef} className="w-full p-4">
             {chats.map((chat, index) => (
               <div key={index} className="flex items-center">
@@ -290,7 +363,7 @@ export default function Bot() {
               </div>
             )}
           </div>
-        </div>
+        {/* </div> */}
       </div>
       <FooterComponent />
     </>

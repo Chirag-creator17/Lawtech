@@ -1,11 +1,11 @@
 import LoginComponent from "./login";
 import CreateAccount from "./createAccount";
-const Navbar = () => {
+const Navbar = ({ isLoggedIn }) => {
   return (
     <>
       <div className="flex flex-row p-2 items-center my-3">
         <div className="text-2xl font-extrabold text-[#3D00B7] ml-8 lg:mr-16 mr-10">
-          ABC
+          LawMate
         </div>
         <div className="flex flex-row text-md">
           <div className="lg:mr-8 mr-5">Find a Lawyer</div>
@@ -22,8 +22,14 @@ const Navbar = () => {
           {/* <button className=" bg-[#3D00B7] text-white rounded-[60px] lr:mr-5 mr-2 px-6 py-0.5 lg:py-2">
               Login
             </button> */}
-          <LoginComponent />
-          <CreateAccount />
+          {isLoggedIn ? (
+            <div className="text-2xl font-normal text-gray-800 mr-9 mt-0.5">Welcome User</div>
+          ) : (
+            <>
+              <LoginComponent />
+              <CreateAccount />
+            </>
+          )}
         </div>
       </div>
       <hr />
