@@ -10,6 +10,7 @@ export default function Bot() {
   ]);
   const [loading, setLoading] = useState(false);
   const [inputEnabled, setInputEnabled] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const chatContainerRef = useRef(null);
   const inputRef = useRef(null);
@@ -20,6 +21,14 @@ export default function Bot() {
         chatContainerRef.current.scrollHeight;
     }
   }, [chats]);
+
+  useEffect(() => {
+    const cookies = document.cookie;
+
+    if (cookies.includes("token")) {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
   const handleSubmit = () => {
     if (!inputEnabled) return;
@@ -206,7 +215,7 @@ export default function Bot() {
   };
   return (
     <>
-      <Navbar />
+      <Navbar isLoggedIn={isLoggedIn} />
       <div className="flex flex-col mt-8  items-center min-h-[70vh]">
         <div className="flex flex-col items-center justify-center mb-2">
           <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-tr from-[#00CDFA] to-[#FF76DF]">

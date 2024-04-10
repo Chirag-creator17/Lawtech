@@ -1,12 +1,13 @@
 import LoginComponent from "./login";
 import CreateAccount from "./createAccount";
+import Link from "next/link";
 const Navbar = ({ isLoggedIn }) => {
   return (
     <>
       <div className="flex flex-row p-2 items-center my-3">
-        <div className="text-2xl font-extrabold text-[#3D00B7] ml-8 lg:mr-16 mr-10">
+        <Link href="/" className="text-2xl font-extrabold text-[#3D00B7] ml-8 lg:mr-16 mr-10">
           LawMate
-        </div>
+        </Link>
         <div className="flex flex-row text-md">
           <div className="lg:mr-8 mr-5">Find a Lawyer</div>
           <div className="lg:mr-8 mr-5">Get Started</div>
@@ -23,7 +24,9 @@ const Navbar = ({ isLoggedIn }) => {
               Login
             </button> */}
           {isLoggedIn ? (
-            <div className="text-2xl font-normal text-gray-800 mr-9 mt-0.5">Welcome User</div>
+            <div className="text-xl mr-9 mt-1">
+              Welcome User
+            </div>
           ) : (
             <>
               <LoginComponent />
