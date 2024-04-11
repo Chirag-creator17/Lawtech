@@ -3,7 +3,7 @@ const FooterComponent = () => {
   return (
     <div className="grid grid-cols-7 mb-10 mt-12 mx-8 gap-2">
       <div className="col-span-2">
-        <div className="text-2xl font-bold mb-5"> ABC </div>
+        <div className="text-2xl font-bold mb-5"> LawMate </div>
               <div className="text-[#565656]"> India’s biggest legal marketplace.</div>
               <div className="flex flex-row mt-12">
                 <img src="./facebook.svg" alt="facebook" className="mr-5" />
