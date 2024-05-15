@@ -23,7 +23,7 @@ print(df[0].isna().sum())
 #   3      0
 #   4    463
 #   5    601
-
+ 
 #removing NaN values
 df_final=df[0].dropna()
 print(df_final)

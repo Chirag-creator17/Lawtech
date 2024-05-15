@@ -1530,21 +1530,43 @@ def get_case_description(msg):
 # files.download(excel_filename)
 # !pip install spacy
 # !pip install openai
-    import openai
-    import spacy
-    import json
-    # Replace with your actual API key
-    api_key = os.environ.get("OPEN_API_KEY")
-    openai.api_key = api_key
-    # output=openai.ChatCompletion.create(model="gpt-3.5-turbo",messages=[{"role":"user","content":"My friend murdered my father because he was not able to pay the loan of rs 5 lakhs. I reside in noida district Suggest type of lawyer, type of court, and court location for it.give only set as output of the form [a,b,c] and select type of lawyer from following list : Intellectual Property Lawyer, Public Interest Lawyer, Tax Lawyer, Corporate Lawyers, Immigration Lawyers, Criminal Lawyer, Civil Rights Lawyer, Family Lawyer, Environmental Lawyer, Entertainment Lawyer, Estate Planning Lawyer, Civil Litigation Lawyers, Constitutional Lawyers, Real Estate Lawyers, Estate Planning Lawyers, Bankruptcy Lawyers, Labor Lawyers, Malpractice Lawyers, Personal Injury Lawyers, Toxic Tort Lawyers, Family Lawyers, Contract Lawyer, Employment Lawyer"}])
-    # print(output)
-    output = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "user", "content": f"{case_description} Suggest type of lawyer, type of court, and court location for it.give only set as output of the form [a,b,c] and select type of lawyer from following list : Intellectual Property Lawyer, Public Interest Lawyer, Tax Lawyer, Corporate Lawyers, Immigration Lawyers, Criminal Lawyer, Civil Rights Lawyer, Family Lawyer, Environmental Lawyer, Entertainment Lawyer, Estate Planning Lawyer, Civil Litigation Lawyers, Constitutional Lawyers, Real Estate Lawyers, Estate Planning Lawyers, Bankruptcy Lawyers, Labor Lawyers, Malpractice Lawyers, Personal Injury Lawyers, Toxic Tort Lawyers, Family Lawyers, Contract Lawyer, Employment Lawyer"}])
-    #!pip install ast
-    import ast
-    content_set_str = output['choices'][0]['message']['content']
+    # import openai
+    # import spacy
+    # import json
+    # # Replace with your actual API key
+    # api_key = os.environ.get("OPEN_API_KEY")
+    # openai.api_key = api_key
+    # # output=openai.ChatCompletion.create(model="gpt-3.5-turbo",messages=[{"role":"user","content":"My friend murdered my father because he was not able to pay the loan of rs 5 lakhs. I reside in noida district Suggest type of lawyer, type of court, and court location for it.give only set as output of the form [a,b,c] and select type of lawyer from following list : Intellectual Property Lawyer, Public Interest Lawyer, Tax Lawyer, Corporate Lawyers, Immigration Lawyers, Criminal Lawyer, Civil Rights Lawyer, Family Lawyer, Environmental Lawyer, Entertainment Lawyer, Estate Planning Lawyer, Civil Litigation Lawyers, Constitutional Lawyers, Real Estate Lawyers, Estate Planning Lawyers, Bankruptcy Lawyers, Labor Lawyers, Malpractice Lawyers, Personal Injury Lawyers, Toxic Tort Lawyers, Family Lawyers, Contract Lawyer, Employment Lawyer"}])
+    # # print(output)
+    # output = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[{"role": "user", "content": f"{case_description} Suggest type of lawyer, type of court, and court location for it.give only set as output of the form [a,b,c] and select type of lawyer from following list : Intellectual Property Lawyer, Public Interest Lawyer, Tax Lawyer, Corporate Lawyers, Immigration Lawyers, Criminal Lawyer, Civil Rights Lawyer, Family Lawyer, Environmental Lawyer, Entertainment Lawyer, Estate Planning Lawyer, Civil Litigation Lawyers, Constitutional Lawyers, Real Estate Lawyers, Estate Planning Lawyers, Bankruptcy Lawyers, Labor Lawyers, Malpractice Lawyers, Personal Injury Lawyers, Toxic Tort Lawyers, Family Lawyers, Contract Lawyer, Employment Lawyer"}])
+    # #!pip install ast
+    # import ast
+    # content_set_str = output['choices'][0]['message']['content']
 
-    # Remove square brackets and split the string into a list of strings
-    content_set = [item.strip() for item in content_set_str[1:-1].split(',')]
+    # # Remove square brackets and split the string into a list of strings
+    # content_set = [item.strip() for item in content_set_str[1:-1].split(',')]
+    msg=msg.lower()
+    content_set=[]
+    if(msg.find("murder")!=-1):
+        content_set.append("Criminal Lawyer")
+    elif(msg.find("divorce")!=-1):
+        content_set.append("Family Lawyer")
+    else:
+        content_set.append("Civil Rights Lawyer")
+        
+    content_set.append("District Court")
+    states = [
+    "andhra pradesh", "arunachal pradesh", "assam", "bihar", "chhattisgarh",
+    "goa", "gujarat", "haryana", "himachal pradesh", "jammu and kashmir",
+    "jharkhand", "karnataka", "kerala", "madhya pradesh", "maharashtra",
+    "manipur", "meghalaya", "mizoram", "nagaland", "odisha", "punjab",
+    "rajasthan", "sikkim", "tamil nadu", "telangana", "tripura", 
+    "uttar pradesh", "uttarakhand", "west bengal"
+    ]
+    for i in states:
+        if (msg.find(i)!=-1):
+            content_set.append(i)
+            break
 
     # print(content_set)
 

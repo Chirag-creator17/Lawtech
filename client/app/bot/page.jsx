@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Navbar from "@/ui/navbar/navbar";
 import FooterComponent from "@/ui/footer/footer";
 import axios from "axios";
+import Link from "next/link";
 export default function Bot() {
   const [input, setInput] = useState("");
   const [chats, setChats] = useState([
@@ -174,34 +175,68 @@ export default function Bot() {
                   {json.map((item) => (
                     <tr key={item.AOR_Code}>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">{item.Name}</div>
+                        <Link
+                          href={{
+                            pathname: "/lawyerProfile",
+                            query: {
+                              name: item.Name,
+                              aor: item.AOR_Code,
+                              court: item.court,
+                              type: item.Type_of_Lawyer,
+                              stars: item.stars,
+                              location: item.location,
+                              fee: item.consultation_fee
+                            },
+                          }}
+                          className="text-sm text-gray-900"
+                        >
+                          {item.Name}
+                        </Link>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">{item.AOR_Code}</div>
+                        <div className="text-sm text-gray-900">
+                          {item.AOR_Code}
+                        </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">{item.Court}</div>
+                        <div className="text-sm text-gray-900">
+                          {item.Court}
+                        </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">{item.Stakeholder_Type}</div>
+                        <div className="text-sm text-gray-900">
+                          {item.Stakeholder_Type}
+                        </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">{item.Type_of_Lawyer}</div>
+                        <div className="text-sm text-gray-900">
+                          {item.Type_of_Lawyer}
+                        </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">{item.Stars}</div>
+                        <div className="text-sm text-gray-900">
+                          {item.Stars}
+                        </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">{item.Type_of_Court}</div>
+                        <div className="text-sm text-gray-900">
+                          {item.Type_of_Court}
+                        </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">{item.location}</div>
+                        <div className="text-sm text-gray-900">
+                          {item.location}
+                        </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">{item.consultation_fee}</div>
+                        <div className="text-sm text-gray-900">
+                          {item.consultation_fee}
+                        </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">{item.Location}</div>
+                        <div className="text-sm text-gray-900">
+                          {item.Location}
+                        </div>
                       </td>
                     </tr>
                   ))}
@@ -221,7 +256,9 @@ export default function Bot() {
           <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-tr from-[#00CDFA] to-[#FF76DF]">
             E-Vakil Bot
           </h1>
-          <p className="mt-3">Your personalised AI-powered chatbot for all your legal needs</p>
+          <p className="mt-3">
+            Your personalised AI-powered chatbot for all your legal needs
+          </p>
 
           <div className="flex gap-4 mt-12 h-[30vh]">
             <div className="flex flex-col gap-y-4 w-[30vw] p-4">
@@ -255,7 +292,7 @@ export default function Bot() {
               </div>
               <p className="border border-zinc-300 rounded-lg p-4 font-[#111827] text-sm">
                 "My friend murdered my father because he was not able to pay the
-                loan of Rs 5 lakhs. I reside in Tees Hazari district. Suggest me
+                loan of Rs 5 lakhs. I reside in Delhi. Suggest me
                 a lawyer in the consultation fee range 3000-5000."
               </p>
             </div>
@@ -310,68 +347,68 @@ export default function Bot() {
           </div>
         </div>
         {/* <div className="flex mt-8 h-[40vh] w-[80vw] overflow-y-scroll rounded-lg bg-[##E9E9FE]"> */}
-          <div ref={chatContainerRef} className="w-full p-4">
-            {chats.map((chat, index) => (
-              <div key={index} className="flex items-center">
-                {chat.author === "bot" ? (
-                  <div className="mr-2 rounded-full border border-stone-300 p-2">
-                    {/* <BotIcon size={21} /> */}
-                  </div>
-                ) : (
-                  <div className="mr-2 rounded-full border border-stone-200 p-2">
-                    {/* <User2 size={21} /> */}
-                  </div>
-                )}
-                <div className="mb-2 inline-flex w-full items-center p-4">
-                  <span
-                    className={`${
-                      chat.author === "user" ? "text-gray-400" : "text-gray-500"
-                    } inline-block w-full rounded-lg text-base
-                font-medium`}
-                  >
-                    {chat.author === "bot" && chat.message[0] !== "H"
-                      ? display_clients(chat.message)
-                      : chat.message}
-                  </span>
+        <div ref={chatContainerRef} className="w-full p-4">
+          {chats.map((chat, index) => (
+            <div key={index} className="flex items-center">
+              {chat.author === "bot" ? (
+                <div className="mr-2 rounded-full border border-stone-300 p-2">
+                  {/* <BotIcon size={21} /> */}
                 </div>
+              ) : (
+                <div className="mr-2 rounded-full border border-stone-200 p-2">
+                  {/* <User2 size={21} /> */}
+                </div>
+              )}
+              <div className="mb-2 inline-flex w-full items-center p-4">
+                <span
+                  className={`${
+                    chat.author === "user" ? "text-gray-400" : "text-gray-500"
+                  } inline-block w-full rounded-lg text-base
+                font-medium`}
+                >
+                  {chat.author === "bot" && chat.message[0] !== "H"
+                    ? display_clients(chat.message)
+                    : chat.message}
+                </span>
               </div>
-            ))}
+            </div>
+          ))}
 
-            {loading && (
-              <div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 1, repeat: Infinity }}
-                className="ml-2 mt-2 flex h-4 w-4 animate-spin items-start rounded-full ring-gray-400"
-              >
-                <div className="h-2 w-2 rounded-full bg-gray-400"></div>
-              </div>
-            )}
+          {loading && (
+            <div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 1, repeat: Infinity }}
+              className="ml-2 mt-2 flex h-4 w-4 animate-spin items-start rounded-full ring-gray-400"
+            >
+              <div className="h-2 w-2 rounded-full bg-gray-400"></div>
+            </div>
+          )}
 
-            {inputEnabled && (
-              <div className="mt-2 flex items-center rounded-lg border p-4">
-                <input
-                  ref={inputRef}
-                  type="text"
-                  value={input}
-                  onChange={(event) =>
-                    setInput(
-                      event.target.value.charAt(0).toUpperCase() +
-                        event.target.value.slice(1)
-                    )
-                  }
-                  onKeyDown={handleKeyDown}
-                  className="w-full bg-transparent text-base font-medium text-gray-400 outline-none placeholder:text-gray-400"
-                  placeholder="Type your message here..."
-                />
-                <button
-                  type="submit"
-                  size={21}
-                  className="mr-4"
-                  onClick={handleSubmit}
-                />
-              </div>
-            )}
-          </div>
+          {inputEnabled && (
+            <div className="mt-2 flex items-center rounded-lg border p-4">
+              <input
+                ref={inputRef}
+                type="text"
+                value={input}
+                onChange={(event) =>
+                  setInput(
+                    event.target.value.charAt(0).toUpperCase() +
+                      event.target.value.slice(1)
+                  )
+                }
+                onKeyDown={handleKeyDown}
+                className="w-full bg-transparent text-base font-medium text-gray-400 outline-none placeholder:text-gray-400"
+                placeholder="Type your message here..."
+              />
+              <button
+                type="submit"
+                size={21}
+                className="mr-4"
+                onClick={handleSubmit}
+              />
+            </div>
+          )}
+        </div>
         {/* </div> */}
       </div>
       <FooterComponent />

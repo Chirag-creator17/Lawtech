@@ -11,9 +11,7 @@ from response import res
 @app.route("/", methods=["POST"])
 def main():
     msg = request.json["msg"]
-    # return get_case_description(msg)
-    print(msg)
-    return jsonify(res)
+    return get_case_description(msg)
 
 if __name__ == "__main__":
     app.run(debug=True)
